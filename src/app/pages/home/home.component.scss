@@ -1,0 +1,14 @@
+.w-40{
+    width: 40%;
+}
+
+::ng-deep qr-code img{
+    width: 200px;
+    height: 200px;
+    margin-left: 32%;
+    margin-top: 50px;
+}
+
+.link-card:hover{
+    background-color: rgb(184, 184, 184);
+}

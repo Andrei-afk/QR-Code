@@ -1,0 +1,172 @@
+<div style="position: absolute; width: 400px;">
+  <div class="card">
+    <div class="card-header">
+      <h2>Search History</h2>
+    </div>
+    <div class="card-body border-bottom link-card" (click)="getSearch()">
+      <p >Back to search</p>
+    </div>
+    <div class="card-body border-bottom link-card" *ngFor="let link of linksHistory" (click)="getCode(link)">
+      <p >{{ link }}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="viewCodeMode"> 
+  <qr-code [value]="viewCodeModeLink" *ngIf="submitted" ></qr-code>
+
+</div>
+<div class=" main-content" *ngIf="!viewCodeMode">
+    <div class=" header bg-gradient-danger py-7 py-lg-8 pt-lg-9">
+      <div class=" container">
+        <div class=" header-body text-center mb-7">
+          <div class=" row justify-content-center">
+            <div class=" col-xl-5 col-lg-6 col-md-8 px-5">
+              <h1 class=" text-black">Generate qr code</h1>
+  
+              <p class=" text-lead text-black">
+                Use these awesome forms to generate or create new qr code for advanced search on google.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+  
+    <div class=" container mt--8 pb-5">
+      <div class=" row justify-content-center">
+        <div class=" col-lg-6 col-md-8">
+          <div class=" card bg-light border-0">
+
+  
+            <div class=" card-body px-lg-5 py-lg-5">
+  
+              <form [formGroup]="searchForm" autocomplete="off" autocapitalize="off" autocorrect="off" (ngSubmit)="submit()">
+                <div class="form-group" [ngClass]="{ focused: focus === true }">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="all these words:"
+                      type="text"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                      formControlName="all"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{ focused: focus1 === true }">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="this exact word or phrase:"
+                      type="text"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                      formControlName="exact"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{ focused: focus1 === true }">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+  
+                      </div>
+                      <input
+                        class="form-control"
+                        placeholder="any of these words:"
+                        type="text"
+                        (focus)="focus1 = true"
+                        (blur)="focus1 = false"
+                        formControlName="any"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group" [ngClass]="{ focused: focus1 === true }">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+  
+                      </div>
+                      <input
+                        class="form-control"
+                        placeholder="none of these words:"
+                        type="text"
+                        (focus)="focus1 = true"
+                        (blur)="focus1 = false"
+                        formControlName="none"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between">
+                    <div class="form-group w-40" [ngClass]="{ focused: focus1 === true }">
+                        <div class="input-group input-group-alternative mb-3">
+                          <div class="input-group-prepend">
+      
+                          </div>
+                          <input
+                            class="form-control "
+                            placeholder="numbers ranging from:"
+                            type="number"
+                            (focus)="focus1 = true"
+                            (blur)="focus1 = false"
+                            formControlName="range1"
+                          />
+                        </div>
+                      </div>
+    
+                      <div class="form-group w-40" [ngClass]="{ focused: focus1 === true }">
+                        <div class="input-group input-group-alternative mb-3">
+                          <div class="input-group-prepend">
+      
+                          </div>
+                          <input
+                            class="form-control "
+                            placeholder="numbers ranging to:"
+                            type="number"
+                            (focus)="focus1 = true"
+                            (blur)="focus1 = false"
+                            formControlName="range2"
+                          />
+                        </div>
+                      </div>
+                  </div>
+
+
+
+                <div class="text-muted font-italic">
+                </div>
+                <div class="row my-4">
+                  <div class="col-12">
+                    <div
+                      class="custom-control custom-control-alternative custom-checkbox"
+                    >
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary mt-4">
+                    Generate code
+                  </button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        
+          <qr-code [value]="link" *ngIf="submitted" ></qr-code>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
